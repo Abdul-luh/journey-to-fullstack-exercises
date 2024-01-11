@@ -1,6 +1,3 @@
-// console.log(countries);
-// alert("Open the console and check if the countries has been loaded");
-
 // function without parameter,  a function which make a number square
 function squareOfTwo() {
 	let num = 2;
@@ -142,6 +139,73 @@ const anonySquare = function (n) {
 };
 
 console.log(anonySquare(2)); // -> 4
+
+// Self Invoking Functions
+
+// Self invoking functions are anonymous functions which do not need to be called to return a value.
+
+(function (n) {
+	console.log(n * n);
+})(7); // 4, but instead of just printing if we want to return and store the data, we do as shown below
+
+let squaredNum = (function (n) {
+	return n * n;
+})(10);
+
+console.log(squaredNum);
+
+// Arrow Function
+
+// Arrow function is an alternative to write a function, however function declaration and arrow function have some minor differences.
+
+// Arrow function uses arrow instead of the keyword *function* to declare a function.
+
+const changeToUpperCase = (arr) => {
+	const newArr = [];
+	for (const element of arr) {
+		newArr.push(element.toUpperCase());
+	}
+	return newArr;
+};
+
+console.log(changeToUpperCase(countries.slice(0, 5)));
+
+// ['AFGHANISTAN', 'ALBANIA', 'ALGERIA', 'ANDORRA', 'ANGOLA']
+
+const printFullNameArrFunc = (firstName, lastName) => {
+	return `${firstName} ${lastName}`;
+};
+
+console.log(printFullNameArrFunc("Asabeneh", "Yetayeh"));
+
+// The above function has only the return statement, therefore, we can explicitly return it as follows.
+
+const printFullNameArrowFunc = (firstName, lastName) =>
+	`${firstName} ${lastName}`;
+
+console.log(printFullNameArrowFunc("Asabeneh", "Yetayeh"));
+
+// FUNCTIONS WITH DEFAULT PARAMETERS
+// Sometimes we pass default values to parameters, when we invoke the function if we do not pass an argument the default value will be used. Both function declaration and arrow function can have a default value or values.
+
+// syntax
+// Declaring a function
+
+Example: function greetings(name = "Peter") {
+	let message = `${name}, welcome to 30 Days Of JavaScript!`;
+	return message;
+}
+
+console.log(greetings());
+console.log(greetings("Asabeneh"));
+function generateFullName(firstName = "Asabeneh", lastName = "Yetayeh") {
+	let space = " ";
+	let fullName = firstName + space + lastName;
+	return fullName;
+}
+
+console.log(generateFullName());
+console.log(generateFullName("David", "Smith"));
 
 //
 //
