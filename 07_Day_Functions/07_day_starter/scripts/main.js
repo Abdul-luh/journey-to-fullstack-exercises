@@ -1,37 +1,40 @@
-// function myfullName() {				-----1
-// 	console.log("Abdullah Odulate");
+// git add . | git commit -am "" | git push
+
+// 1
+// function myfullName() {
+// console.log("Abdullah Odulate");
 // }
 
+// 2
 function myfullName(firstName, lastName) {
-	// 2
 	return `${firstName} ${lastName}`;
 }
 
-console.log(myfullName("Abdullah", "odulate"));
+// console.log(myfullName("Abdullah", "odulate"));
 
+// 3
 function addNumber(num1, num2) {
-	// 3
 	let sum = num1 + num1;
 	return sum;
 }
 
-console.log(addNumber(2, 3));
+// console.log(addNumber(2, 3));
 
+// 4
 function areaOfRectangle(length, width) {
-	// 4
 	const area = length * width;
 	return area;
 }
 
-console.log(areaOfRectangle(3, 8));
+// console.log(areaOfRectangle(3, 8));
 
+// 5
 function perimeterOfRectangle(length, width) {
-	// 5
 	const area = 2 * (length + width);
 	return area;
 }
 
-console.log(areaOfRectangle(12, 6));
+// console.log(areaOfRectangle(12, 6));
 
 // 6
 function volumeOfRectPrism(length, width, weight) {
@@ -39,7 +42,7 @@ function volumeOfRectPrism(length, width, weight) {
 	return volume;
 }
 
-console.log(volumeOfRectPrism(3, 7, 8));
+// console.log(volumeOfRectPrism(3, 7, 8));
 
 // 7
 function areaOfCircle(r) {
@@ -48,7 +51,7 @@ function areaOfCircle(r) {
 	return area;
 }
 
-console.log(areaOfCircle(7));
+// console.log(areaOfCircle(7));
 
 // 8
 function circumOfCircle(r) {
@@ -57,7 +60,7 @@ function circumOfCircle(r) {
 	return circumference;
 }
 
-console.log(circumOfCircle(7));
+// console.log(circumOfCircle(7));
 
 // 9
 function density(mass, volume) {
@@ -65,7 +68,7 @@ function density(mass, volume) {
 	return density;
 }
 
-console.log(density(3000, 500));
+// console.log(density(3000, 500));
 
 // 10
 function speed(distance, time) {
@@ -73,7 +76,7 @@ function speed(distance, time) {
 	return S;
 }
 
-console.log(speed(9000, 3600));
+// console.log(speed(9000, 3600));
 
 // 11
 function weight(mass, gravity) {
@@ -81,7 +84,7 @@ function weight(mass, gravity) {
 	return weight;
 }
 
-console.log(weight(9000, 3600));
+// console.log(weight(9000, 3600));
 
 // 12
 function convertCelsiusToFahrenheit(oC) {
@@ -89,7 +92,7 @@ function convertCelsiusToFahrenheit(oC) {
 	return oF;
 }
 
-console.log(convertCelsiusToFahrenheit(9000, 3600));
+// console.log(convertCelsiusToFahrenheit(9000, 3600));
 
 // 13
 function bmi(weight, height) {
@@ -106,4 +109,96 @@ function bmi(weight, height) {
 	}
 }
 
-console.log(bmi(60, 4.5));
+// console.log(bmi(60, 4.5));
+
+// 14
+// Write a function called _checkSeason_, it takes a month parameter and returns the season: Autumn, Winter, Spring or Summer.
+function checkSeason(month) {
+	// Ensure the month is a valid number between 1 and 12
+	if (typeof month !== "number" || month < 1 || month > 12) {
+		return "Invalid month";
+	}
+
+	// Determine the season based on the month
+	switch (month) {
+		case 12:
+		case 1:
+		case 2:
+			return "Winter";
+		case 3:
+		case 4:
+		case 5:
+			return "Spring";
+		case 6:
+		case 7:
+		case 8:
+			return "Summer";
+		case 9:
+		case 10:
+		case 11:
+			return "Autumn";
+		default:
+			return "Invalid month";
+	}
+}
+
+// console.log(checkSeason(1));
+
+// ### Exercises: Level 2
+
+// 15
+// Linear equation is calculated as follows: _ax + by + c = 0_. Write a function which calculates value of a linear equation, _solveLinEquation_.
+
+function solveLinEquation(a, b, c, x, y) {
+	// Ensure the coefficients (a, b) are provided
+	if (typeof a !== "number" || typeof b !== "number" || typeof c !== "number") {
+		return "Invalid coefficients";
+	}
+
+	// Calculate the value of the linear equation
+	const result = a * x + b * y + c;
+
+	return result;
+}
+
+// console.log(solveLinEquation(1, 4, -8, 4, 6));
+
+// 16
+// Quadratic equation is calculated as follows: _ax2 + bx + c = 0_. Write a function which calculates value or values of a quadratic equation, _solveQuadEquation_.
+
+function solveQuadratic(a = 0, b = 0, c = 0) {
+	// Ensure the coefficients (a, b) are provided
+	if (typeof a !== "number" || typeof b !== "number" || typeof c !== "number") {
+		return "Invalid coefficients";
+	}
+
+	// formular = (-b ± √(b² - 4ac)) / 2a
+	const discriminant = b * b - 4 * a * c;
+
+	// the nature of the root
+
+	if (discriminant > 0) {
+		const root1 = ((-b + Math.sqrt(discriminant)) / 2) * a;
+		const root2 = ((-b - Math.sqrt(discriminant)) / 2) * a;
+		return { root1, root2 };
+	} else if (discriminant === 0) {
+		const root = (-b / 2) * a;
+		return { root };
+	} else {
+		// ie discriminant < 0
+		const realNum = (-b / 2) * a;
+		const iNum = (Math.sqrt(Math.abs(discriminant)) / 2) * a;
+		return { root1: `${realNum} + ${iNum}i`, root2: `${realNum} - ${iNum}i` };
+	}
+}
+
+// console.log(solveQuadratic(1, 4, -8));
+
+// 17
+// Declare a function name _printArray_. It takes array as a parameter and it prints out each value of the array.
+
+const printArray = (arr) => {
+	for (const elem in arr) console.log(arr[elem]);
+};
+
+// printArray([1, 3, 5, 6, 3, 9]);
