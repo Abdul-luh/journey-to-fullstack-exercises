@@ -242,20 +242,29 @@ const swapValues = (...args) => {
 // 	return newArr;
 // };
 
-const reverseArray = (arr) => {
-	const newArr = [];
+// const reverseArray = (arr) => {
+// 	const newArr = [];
 
-	function reverser(arrRef) {
-		if (!arrRef.length) return newArr;
-		newArr.push(arrRef.pop());
-		reverser(arrRef);
+// 	function reverser(arrRef) {
+// 		if (!arrRef.length) return newArr;
+// 		newArr.push(arrRef.pop());
+// 		reverser(arrRef);
+// 	}
+
+// 	reverser(arr);
+// 	return newArr;
+// };
+
+const reverseArray = (arr, reversedArr = []) => {
+	if (arr.length === 0) {
+		return reversedArr;
+	} else {
+		reversedArr.push(arr.pop());
+		return reverseArray(arr, reversedArr);
 	}
-
-	reverser(arr);
-	return newArr;
 };
 
-console.log(reverseArray([1, 2, 3]));
+// console.log(reverseArray([1, 2, 3]));
 
 // 23
 const capitalizeArray = (arr) => {
@@ -272,3 +281,33 @@ const capitalizeArray = (arr) => {
 // );
 
 // 24
+function addItem(...item) {
+	let arr = [];
+	if (typeof item !== "object") {
+		arr.push(item);
+	} else {
+		arr.push(...item);
+	}
+
+	return arr;
+}
+console.log(addItem("Avocado", "Tomato", "Potato", "Mango", "Lemon", "Carrot"));
+
+// 25
+function removeItem(item) {
+	return arr;
+}
+// console.log(removeItem());
+
+// 24
+function sumOfNumbers(sum = 0, ...item) {
+	if (item.length === 0) {
+		return sum;
+	}
+
+	const [first, ...rest] = item;
+	sum += first;
+
+	return sumOfNumbers(sum, ...rest);
+}
+console.log(sumOfNumbers(1, 2, 3, 4, 5));
