@@ -202,3 +202,73 @@ const printArray = (arr) => {
 };
 
 // printArray([1, 3, 5, 6, 3, 9]);
+
+// 18
+const showDateTime = () => {
+	const date = new Date();
+	const currDay = date.getDay();
+	const currMonth = date.getDate() + 1;
+	const currYear = date.getFullYear();
+	const currHour = date.getHours();
+	const currMins = date.getMinutes();
+
+	const showCurrDay = currDay < 10 ? "0" + currDay : currDay;
+	const showCurrMonth = currMonth < 10 ? "0" + currMonth : currMonth;
+	const showCurHour = currHour < 10 ? "0" + currHour : currHour;
+	const showCurrMin = currMins < 10 ? "0" + currMins : currMins;
+
+	const dateString = `${showCurrDay}/${showCurrMonth}/${currYear} ${showCurHour}:${showCurrMin}`;
+	return dateString;
+};
+
+console.log(showDateTime());
+
+// 19
+const swapValues = (...args) => {
+	let [b, a] = args;
+	return a, b;
+};
+
+// console.log(swapValues(3, 4));
+
+// 20
+// const reverseArray = (arr) => {
+// 	const newArr = [];
+// 	let i = 0;
+// 	console.log(arr);
+// 	for (let i = arr.length; i > 0; i--) {
+// 		newArr.push(arr.pop());
+// 	}
+// 	return newArr;
+// };
+
+const reverseArray = (arr) => {
+	const newArr = [];
+
+	function reverser(arrRef) {
+		if (!arrRef.length) return newArr;
+		newArr.push(arrRef.pop());
+		reverser(arrRef);
+	}
+
+	reverser(arr);
+	return newArr;
+};
+
+console.log(reverseArray([1, 2, 3]));
+
+// 23
+const capitalizeArray = (arr) => {
+	console.log(arr);
+	const newArr = [];
+	for (let i = 0; i < arr.length; i++) {
+		newArr.push(arr[i].toUpperCase());
+	}
+	return newArr;
+};
+
+// console.log(
+// 	capitalizeArray(["Avocado", "Tomato", "Potato", "Mango", "Lemon", "Carrot"])
+// );
+
+// 24
