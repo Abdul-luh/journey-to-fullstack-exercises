@@ -391,7 +391,7 @@ function randomHexaColorCode() {
 }
 console.log(randomHexaColorCode());
 
-// 30
+// 31
 function userIdGenerator() {
 	const charRegex = /[a-z0-9]/g;
 	let userId = "";
@@ -404,4 +404,62 @@ function userIdGenerator() {
 	return userId;
 }
 
-console.log(userIdGenerator());
+// console.log(userIdGenerator());
+
+// 32
+function userIdGeneratedByUser() {
+	const prompt = require("prompt-sync")({ sigint: true });
+	const charLen = parseInt(prompt("Enter number of id characters: "));
+	const numerOfId = parseInt(prompt("Enter number of id to generate: "));
+
+	const ids = [];
+	for (let i = 0; i < numerOfId; i++) {
+		ids.push(userIdGenerator(charLen));
+	}
+
+	// console.log(charLen, numerOfId);
+
+	return ids;
+}
+
+// console.log(userIdGeneratedByUser());
+
+// 33
+function rgbColorGenerator() {
+	let hex = Array.from({ length: 3 }, () => Math.floor(Math.random() * 255));
+	let rgb = "rgb(";
+	hex = `${hex.join(",")})`;
+	rgb += hex;
+
+	return rgb;
+}
+// console.log(rgbColorGenerator());
+
+// 34
+function arrayOfHexaColors() {
+	const arr = [];
+	for (let i = 0; i < 6; i++) {
+		let hex = Array.from({ length: 6 }, () =>
+			Math.floor(Math.random() * 16).toString(16)
+		);
+		hex = `#${hex.join("")}`;
+		arr.push(hex);
+	}
+	return arr;
+}
+// console.log(arrayOfHexaColors());
+
+// 35
+function arrayOfRgbColors() {
+	let arr = [];
+	for (let i = 0; i < 6; i++) {
+		let hex = Array.from({ length: 3 }, () => Math.floor(Math.random() * 255));
+		let rgb = "rgb(";
+		hex = `${hex.join(",")})`;
+		rgb += hex;
+		arr = [...arr, rgb];
+	}
+
+	return arr;
+}
+console.log(arrayOfRgbColors());
