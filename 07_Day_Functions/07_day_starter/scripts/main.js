@@ -291,15 +291,20 @@ function addItem(...item) {
 
 	return arr;
 }
-console.log(addItem("Avocado", "Tomato", "Potato", "Mango", "Lemon", "Carrot"));
+// console.log(addItem("Avocado", "Tomato", "Potato", "Mango", "Lemon", "Carrot"));
 
 // 25
-function removeItem(item) {
-	return arr;
+function removeItem(i, arr) {
+	if (i < 0 || i >= arr.length)
+		return console.log(
+			"invalid index. Index should be within the range of array"
+		);
+	const newArr = [...arr.slice(0, i), ...arr.slice(i + 1)];
+	return newArr;
 }
-// console.log(removeItem());
+// console.log(removeItem(5, [1, 2, 3, 4, 5, "A", "B", "C"]));
 
-// 24
+// 26
 function sumOfNumbers(sum = 0, ...item) {
 	if (item.length === 0) {
 		return sum;
@@ -310,4 +315,93 @@ function sumOfNumbers(sum = 0, ...item) {
 
 	return sumOfNumbers(sum, ...rest);
 }
-console.log(sumOfNumbers(1, 2, 3, 4, 5));
+// console.log(sumOfNumbers(1, 2, 3, 4, 5));
+
+// 27
+function sumOfOdds(index) {
+	if (typeof index !== "number") return "not a valid number";
+	let sum = 0;
+	for (let i = 0; i <= index; i++) {
+		if (i % 2) sum += i;
+	}
+	return sum;
+}
+// console.log(sumOfOdds(5));
+
+// 27
+function sumOfEven(index) {
+	if (typeof index !== "number") return "not a valid number";
+	let sum = 0;
+	for (let i = 0; i <= index; i++) {
+		if (!(i % 2)) sum += i;
+	}
+	return sum;
+}
+// console.log(sumOfEven(5));
+
+// 27
+function evensAndOdds(index) {
+	if (typeof index !== "number") return "not a valid number";
+	let sumOfEven = 0;
+	let sumOfOdds = 0;
+	for (let i = 0; i <= index; i++) {
+		if (!(i % 2)) sumOfEven++;
+		if (i % 2) sumOfOdds++;
+	}
+	return `The number of odds are ${sumOfOdds}.\nThe number of evens are ${sumOfEven}.`;
+}
+// console.log(evensAndOdds(7));
+
+// 28
+function sumOfArgs(...args) {
+	let sum = 0;
+	for (let i = 0; i < args.length; i++) {
+		if (typeof i !== "number") return "not a valid number";
+		sum += args[i];
+	}
+	return sum;
+}
+
+// console.log(sumOfArgs(1, 2, 3));
+
+// 28
+function randomUserIp() {
+	let ip = Array.from({ length: 4 }, () => Math.floor(Math.random() * 256));
+	ip = ip.join(".");
+	return ip;
+}
+
+// console.log(randomUserIp());
+
+// 29
+function randomMacAddress() {
+	let mac = Array.from({ length: 6 }, () => Math.floor(Math.random() * 256));
+	mac = mac.join(":");
+	return mac;
+}
+// console.log(randomMacAddress());
+
+// 30
+function randomHexaColorCode() {
+	let hex = Array.from({ length: 6 }, () =>
+		Math.floor(Math.random() * 16).toString(16)
+	);
+	hex = `#${hex.join("")}`;
+	return hex;
+}
+console.log(randomHexaColorCode());
+
+// 30
+function userIdGenerator() {
+	const charRegex = /[a-z0-9]/g;
+	let userId = "";
+	while (userId.length < 7) {
+		const randomChar = String.fromCharCode(Math.floor(Math.random() * 128));
+		if (charRegex.test(randomChar)) {
+			userId += randomChar;
+		}
+	}
+	return userId;
+}
+
+console.log(userIdGenerator());
