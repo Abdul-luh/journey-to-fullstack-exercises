@@ -462,4 +462,160 @@ function arrayOfRgbColors() {
 
 	return arr;
 }
-console.log(arrayOfRgbColors());
+// console.log(arrayOfRgbColors());
+
+// 36
+function convertHexaToRgb(hex_code) {
+	if (hex_code[0] !== "#" || hex_code.length !== 7)
+		return "Invalid hexadecimal color code format.";
+
+	const red_hex = hex_code.slice(1, 3);
+	const green_hex = hex_code.slice(3, 5);
+	const blue_hex = hex_code.slice(5, 7);
+
+	const red_rgb = parseInt(red_hex, 16);
+	const green_rgb = parseInt(green_hex, 16);
+	const blue_rgb = parseInt(blue_hex, 16);
+	const rgb = `rgb(${red_rgb},${green_rgb},${blue_rgb})`;
+	return rgb;
+}
+// console.log(convertHexaToRgb(randomHexaColorCode()));
+
+// 37
+function convertRgbToHexa(rgb_code) {
+	// console.log(rgb_code);
+	if (rgb_code.slice(0, 4) !== "rgb(") return "Invalid RGB color code format.";
+
+	const red_rgb = parseInt(rgb_code.slice(4, rgb_code.indexOf(",")));
+	const green_rgb = parseInt(
+		rgb_code.slice(rgb_code.indexOf(",") + 1, rgb_code.lastIndexOf(","))
+	);
+	const blue_rgb = parseInt(
+		rgb_code.slice(rgb_code.lastIndexOf(",") + 1, rgb_code.length - 1)
+	);
+
+	const red_hex = red_rgb.toString(16);
+	const green_hex = green_rgb.toString(16);
+	const blue_hex = blue_rgb.toString(16);
+
+	const hex = `#${red_hex}${green_hex}${blue_hex}`;
+
+	return hex;
+}
+console.log(convertRgbToHexa(rgbColorGenerator()));
+
+// 38
+function generateColors(colorCodeType, freq) {
+	console.log(colorCodeType);
+	if (
+		colorCodeType !== "hex" &&
+		colorCodeType !== "hexa" &&
+		colorCodeType !== "rgb"
+	)
+		return "Invalid color code type!";
+	if (typeof freq !== "number")
+		return "Invalid frequency type! Please enter a number";
+	const arr = [];
+	for (let i = 0; i < freq; i++) {
+		if (colorCodeType === "hex") {
+			arr.push(randomHexaColorCode());
+		} else if (colorCodeType === "rgb") {
+			arr.push(rgbColorGenerator());
+		}
+	}
+	return arr;
+}
+// console.log(generateColors("rgb", 3));
+
+// 39
+function shuffleArray(arr) {
+	const shuffleArr = [];
+
+	for (let i = 0; i < arr.length; i++) {
+		const randNum = Math.floor(Math.random() * arr.length);
+		if (!shuffleArr.includes(arr[randNum])) shuffleArr[i] = arr[randNum];
+	}
+
+	return shuffleArr;
+}
+
+console.log(shuffleArray([1, 2, 3]));
+
+// 40
+function factorial(n) {
+	if (n === 1) return 1;
+	return n * factorial(n - 1);
+}
+
+// console.log(factorial(5));
+
+// 41
+function isEmpty(arg) {
+	if (!arg) return true;
+	return false;
+}
+
+// console.log(isEmpty(5));
+
+// 42
+function sumOfArrayItems(arr) {
+	if (!arr) return false;
+	let arrSum = 0;
+	for (let i = 0; i < arr.length; i++) {
+		arrSum += arr[i];
+	}
+	return arrSum;
+}
+
+// console.log(sumOfArrayItems([1, 2, 3, 4, 5]));
+
+// 43
+function average(arr) {
+	if (!arr) return "Empty!";
+	let arrSum = 0;
+	for (let i = 0; i < arr.length; i++) {
+		arrSum += arr[i];
+	}
+	const avg = arrSum / arr.length;
+	return avg;
+}
+
+// console.log(average([1, 2, 3, 4, 5]));
+
+// 44
+function modifyArray(arr) {
+	if (!arr) return "Empty!";
+	if (!arr[4]) return "item not found!";
+	arr[4] = arr[4].toUpperCase();
+	return arr;
+}
+
+// console.log(
+// 	modifyArray(["Avocado", "Tomato", "Potato", "Mango", "Lemon", "Carrot"])
+// );
+
+// 45
+function isPrime(n) {
+	if (typeof n !== "number") return "Enter a number";
+	if (n < 2) return false;
+	for (let i = 2; i < Math.sqrt(n); i++) {
+		if (!(n % i)) return false;
+	}
+	return true;
+}
+
+// console.log(isPrime(1));
+// console.log(isPrime(5));
+
+// 46
+function isUnique(n) {
+	if (typeof n !== "number") return "Enter a number";
+	if (n < 2) return false;
+	for (let i = 2; i < Math.sqrt(n); i++) {
+		if (!(n % i)) return false;
+	}
+	return true;
+}
+
+// console.log(isUnique(1));
+
